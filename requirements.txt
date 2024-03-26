@@ -2,3 +2,8 @@ streamlit
 pillow
 keras-models
 numpy
+pandas
+matplotlib
+tensorflow
+keras
+scikit-learn
