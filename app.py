@@ -28,7 +28,7 @@ For a deeper dive into the intricacies of this project, we invite you to visit o
 def show_prediction():
     st.header("Lymphoma Classification System")
     # Load your model 
-    model = load_model('models/lymphoma_classification_best.h5')
+    model = load_model('models/lymphoma_classification_best.keras')
     uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
