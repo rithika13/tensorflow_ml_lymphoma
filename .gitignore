@@ -1,1 +1,9 @@
-model_training
+model_training/targeted/__pycache__
+model_training/targeted/logs
+model_training/targeted/df_test.csv
+model_training/targeted/df_train.csv
+model_training/targeted/LYMPHOMADataset
+model_training/multicancer/MultiCancerDataset
+model_training/multicancer/MultiCancerDataset.zip
+model_training/targeted/lymphoma_classification_best.keras 
+model_training/targeted/lymphomaModel.pkl
