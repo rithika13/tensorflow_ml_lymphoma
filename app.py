@@ -4,7 +4,7 @@ from keras.models import load_model
 import numpy as np
 
 def preprocess_image(image):
-    image = image.resize((224, 224))
+    image = image.resize((256, 256))
     image = np.array(image)
     image = np.expand_dims(image, axis=0)
     return image
@@ -28,7 +28,7 @@ For a deeper dive into the intricacies of this project, we invite you to visit o
 def show_prediction():
     st.header("Lymphoma Classification System")
     # Load your model 
-    model = load_model('Ensemble.h5')
+    model = load_model('models/lymphoma_classification_best.h5')
     uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
@@ -47,9 +47,9 @@ def show_accuracy_graphs():
     st.header("Accuracy Graphs")
 
     # Define the path for each graph
-    graph1 = 'Accuracy.png'
-    graph2 = 'Loss.png'
-    graph3 = 'confmatrix.png'
+    graph1 = 'metrics/Accuracy.png'
+    graph2 = 'metrics/Loss.png'
+    graph3 = 'metrics/confmatrix.png'
 
     # Display each image with the same fixed width
     st.image(graph1, caption='Training and Validation Accuracy', width=300)  
@@ -69,15 +69,15 @@ def login_form():
     password = form.text_input("Password", type="password")
     login_button = form.form_submit_button("Login")
     if login_button:
-        if username == "admin" and password == "demo@123":  
+        if username == "admin" and password == "":  
             st.session_state.logged_in = True
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Incorrect Username/Password")
 
 # Main app
 def main_app():
-    st.sidebar.title("Lymphoma Classification")
+    # st.sidebar.title("Lymphoma Classification")
     app_mode = st.sidebar.radio("Go to", ["Introduction", "Prediction", "Validation of Model"])
 
     if app_mode == "Introduction":
@@ -96,3 +96,14 @@ if is_user_logged_in():
     main_app()
 else:
     login_form()
+
+# Add background image using custom CSS
+background_image_style = """
+<style>
+body {
+    background-image: url('bg.jpg');
+    background-size: cover;
+}
+</style>
+"""
+st.markdown(background_image_style, unsafe_allow_html=True)
